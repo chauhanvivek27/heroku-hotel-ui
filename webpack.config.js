@@ -18,6 +18,11 @@ module.exports = {
     path: path.join(__dirname, "/dist"),
     filename: "index_bundle.js",
   },
+  devServer: {
+    contentBase: path.join(__dirname, "dist"),
+    compress: true,
+    port: process.env.PORT || 9000,
+  },
   module: {
     rules: [
       {

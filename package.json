@@ -4,13 +4,16 @@
   "description": "Hotel Search application",
   "main": "index.js",
   "scripts": {
-    "create": "webpack",
-    "start:dev": "webpack-dev-server",
+    "build": "webpack",
+    "start": "webpack-dev-server",
     "test": "jest --coverage --forceExit --detectOpenHandles",
     "precommit": "npm-run-all stylelint:fix eslint:fix test",
     "test:ci": "jest --coverage --forceExit --detectOpenHandles",
     "test:coverage": "jest --coverage",
     "test:update": "jest --updateSnapshot"
+  },
+  "engines": {
+    "node": "10.16.3"
   },
   "author": "Chauhan",
   "license": "ISC",
