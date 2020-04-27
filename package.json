@@ -4,7 +4,7 @@
   "description": "Hotel Search application",
   "main": "index.js",
   "scripts": {
-    "build": "webpack",
+    "build": "webpack-dev-server",
     "start": "webpack-dev-server",
     "test": "jest --coverage --forceExit --detectOpenHandles",
     "precommit": "npm-run-all stylelint:fix eslint:fix test",
