@@ -1,6 +1,7 @@
 const path = require("path");
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const AssetsPlugin = require("assets-webpack-plugin");
 const webpack = require("webpack");
 const dotenv = require("dotenv");
 
@@ -16,7 +17,27 @@ module.exports = {
   entry: ["babel-polyfill", "./src/index.js"],
   output: {
     path: path.join(__dirname, "/dist"),
-    filename: "index_bundle.js",
+    filename: "[name].[hash].js",
+  },
+  optimization: {
+    chunkIds: "named",
+    splitChunks: {
+      cacheGroups: {
+        commons: {
+          chunks: "initial",
+          minChunks: 1,
+          maxInitialRequests: 5, // The default limit is too small to showcase the effect
+          minSize: 0, // This is example is too small to create commons chunks
+        },
+        vendor: {
+          test: /node_modules/,
+          chunks: "initial",
+          name: "vendor",
+          priority: 10,
+          enforce: true,
+        },
+      },
+    },
   },
   devServer: {
     contentBase: path.join(__dirname, "dist"),
@@ -67,10 +88,15 @@ module.exports = {
   plugins: [
     new webpack.DefinePlugin(envKeys),
     new HtmlWebPackPlugin({
-      hash: true,
+      hash: false,
       filename: "index.html", //target html
       template: "./src/index.html", //source html
     }),
     new ExtractTextPlugin({ filename: "css/style.css" }),
+    new AssetsPlugin({
+      path: path.join(__dirname),
+      filename: "assets.json",
+      prettyPrint: true,
+    }),
   ],
 };

@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-
+import { setUrlParams } from "./../../common/util.js";
 const BLOCKNAME = "hotel-search";
 
 export default class SearchResult extends React.Component {
