@@ -5,6 +5,7 @@ This application is to search hotel based on City, Hotel Name , Price Range and 
 ## Getting Started
 
 Before using the application. Please check Prerequisites and installtion instructions.
+
 Browse the application https://heroku-hotel-template.herokuapp.com/
 
 ### Prerequisites
